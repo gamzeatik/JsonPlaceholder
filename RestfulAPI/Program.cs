@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RestfulAPI.Context;
+using RestfulAPI.Profiles;
 using RestfulAPI.Repositories;
 using RestfulAPI.Service;
 
@@ -17,6 +18,7 @@ builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(EfRepository<>));
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

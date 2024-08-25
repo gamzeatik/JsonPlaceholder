@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using RestfulAPI.DTOs.Requests;
 using RestfulAPI.Model;
 using RestfulAPI.Service;
 using System.Net;
@@ -10,22 +12,29 @@ namespace RestfulAPI.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostsService _service;
+        private readonly IMapper _mapper;
 
-        public PostController(IPostsService service)
+        public PostController(IPostsService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult Create(Post post)
+        public IActionResult Create(CreatePostRequest request)
         {
-            var response = _service.Create(post);
-            if (response == null)
+            // Map CreatePostRequest to Post
+            var post = _mapper.Map<Post>(request);
+            //post.UserId = GetUserIdFromSessionOrToken();
+            post.UserId = 1;
+
+            var createdPost = _service.Create(post);
+            if (createdPost == null)
             {
                 return BadRequest("Post could not be created.");
             }
 
-            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+            return CreatedAtAction(nameof(GetById), new { id = createdPost.Id }, createdPost);
         }
 
         [HttpGet("{id}")]
