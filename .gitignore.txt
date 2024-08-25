@@ -30,7 +30,7 @@ Generated_Code/
 ~$*
 ._*
 
-# IDE-specific files
+# IDE-specific files (Visual Studio and VS Code)
 .vscode/
 .idea/
 .vscode/
@@ -129,3 +129,22 @@ coverage*.html
 
 # StyleCop
 StyleCopReport.xml
+
+# Visual Studio Code specific files
+.vscode/
+*.code-workspace
+
+# Visual Studio specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.userprefs
+*.csproj.user
+*.rsuser
+*.sln.docstates
+
+# Ignore specific Visual Studio working files
+.vs/RestfulAPI/v17/
+.vs/RestfulAPI/FileContentIndex/
+.vs/slnx.sqlite
