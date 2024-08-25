@@ -1,3 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/RestfulAPI/.vs/RestfulAPI/v17
+/RestfulAPI/bin/Debug/net6.0
+/RestfulAPI/obj
+/RestfulAPI/appsettings.Development.json
+/RestfulAPI/RestfulAPI.csproj.user
+/RestfulAPI/Migrations
+/RestfulAPI/Properties/launchSettings.json
+
 # Build results
 [Dd]ebug/
 [Rr]elease/
