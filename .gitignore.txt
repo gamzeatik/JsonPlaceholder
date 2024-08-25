@@ -1,0 +1,131 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.log
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+Generated_Code/
+
+# Backup and temporary files
+*.swp
+*.bak
+*.tmp
+*.tmp.*
+~$*
+._*
+
+# IDE-specific files
+.vscode/
+.idea/
+.vscode/
+*.code-workspace
+.vs/
+*.ncb
+*.opensdf
+*.sdf
+*.sqlite
+*.suo
+*.tlog
+*.VC.db
+*.VC.VC.opendb
+*.DS_Store
+
+# Rider
+.idea/
+*.sln.iml
+
+# Package manager files
+*.nupkg
+*.snupkg
+*.nuget/
+.nuget/
+packages/
+# Package restore results
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Microsoft Visual Studio files
+*.gpState
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+.vs/
+TestResults/
+node_modules/
+!TestResults/IntegrationResults.xml
+
+# User-specific Visual Studio Code files
+.vscode/
+
+# Local environment files
+.env
+local.settings.json
+appsettings*.json
+secret.json
+
+# IIS web server config files
+[Ww]eb.[Cc]onfig
+
+# Azure Function files
+local.settings.json
+
+# Docker files
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.cache
+.*.swp
+.swp
+.directory
+
+# Package lock files
+# Package manager files
+*.nupkg
+*.snupkg
+*.nuspec
+
+# Coverage tool results
+coverage/
+coverage*.json
+coverage*.xml
+coverage*.html
+*.lcov
+
+# Analyzers
+.analyzers/
+
+# StyleCop
+StyleCopReport.xml
