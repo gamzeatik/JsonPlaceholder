@@ -136,6 +136,8 @@ StyleCopReport.xml
 
 # Visual Studio specific files
 .vs/
+.vs\
+*.vs\
 *.user
 *.suo
 *.userosscache
@@ -143,6 +145,8 @@ StyleCopReport.xml
 *.csproj.user
 *.rsuser
 *.sln.docstates
+*\bin\
+*\obj\
 
 # Ignore specific Visual Studio working files
 .vs/RestfulAPI/v17/
