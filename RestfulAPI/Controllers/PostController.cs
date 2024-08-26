@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using RestfulAPI.DTOs.Requests;
+using RestfulAPI.DTOs.Responses;
 using RestfulAPI.Model;
 using RestfulAPI.Service;
 using System.Net;
@@ -33,26 +35,35 @@ namespace RestfulAPI.Controllers
             {
                 return BadRequest("Post could not be created.");
             }
-
-            return CreatedAtAction(nameof(GetById), new { id = createdPost.Id }, createdPost);
+            // Post -> PostResponse
+            var response = _mapper.Map<PostResponse>(createdPost);
+            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var response = _service.GetById(id);
-            if (response == null) return NotFound();
+            var post = _service.GetById(id);
+
+            if (post == null) return NotFound();
+
+            // Post -> PostResponse
+            var response = _mapper.Map<PostResponse>(post);
             return Ok(response);
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var response = _service.GetAll();
-            if (response == null || !response.Any())
+            var posts = _service.GetAll();
+
+            if (posts == null || !posts.Any())
             {
                 return NoContent();
             }
+            // List<Post> -> List<PostResponse>
+            var response = _mapper.Map<List<PostResponse>>(posts);
+
             return Ok(response);
         }
 
@@ -64,11 +75,21 @@ namespace RestfulAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Post post)
+        public IActionResult Update(int id, UpdatePostRequest request)
         {
-            var response = _service.Update(id, post);
-            if (response == null)
+            var existingPost = _service.GetById(id);
+            if (existingPost == null)
+            {
                 return NotFound();
+            }
+
+            _mapper.Map(request, existingPost);
+
+            var updatedPost = _service.Update(id, existingPost);
+
+            // Post -> PostResponse
+            var response = _mapper.Map<PostResponse>(updatedPost);
+
             return Ok(response);
         }
     }
