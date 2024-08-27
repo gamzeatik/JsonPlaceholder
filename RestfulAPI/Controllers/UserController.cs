@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using RestfulAPI.DTOs.Requests;
+using RestfulAPI.DTOs.Responses;
 using RestfulAPI.Model;
 using RestfulAPI.Service;
 
@@ -9,37 +12,47 @@ namespace RestfulAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService service)
+        public UserController(IUserService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult Create(User user)
+        public IActionResult Create(CreateUserRequest request)
         {
-            var response = _service.Create(user);
-            if (response == null) return BadRequest(response);
+            // CreateUserRequest -> User
+            var user = _mapper.Map<User>(request);
+            var createdUser = _service.Create(user);
 
+            if (createdUser == null) return BadRequest(createdUser);
+            var response = _mapper.Map<UserResponse>(createdUser);
             return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var response = _service.GetById(id);
-            if (response == null) return NotFound();
+            var user = _service.GetById(id);
+            if (user == null) return NotFound();
+            // User -> UserResponse
+            var response = _mapper.Map<UserResponse>(user);
             return Ok(response);
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var response = _service.GetAll();
-            if (response == null || !response.Any())
+            var users = _service.GetAll();
+            if (users == null || !users.Any())
             {
                 return NoContent();
             }
+
+            // List<User> -> List<UserResponse>
+            var response = _mapper.Map<List<UserResponse>>(users);
             return Ok(response);
         }
 
@@ -51,11 +64,19 @@ namespace RestfulAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, User user)
+        public IActionResult Update(int id, CreateUserRequest request)
         {
-            var response = _service.Update(id, user);
-            if (response == null)
+            var existingUser = _service.GetById(id);
+            if (existingUser == null)
+            {
                 return NotFound();
+            }
+
+            _mapper.Map(request, existingUser);
+
+            var updatedUser = _service.Update(id, existingUser);
+            var response = _mapper.Map<UserResponse>(updatedUser);
+
             return Ok(response);
         }
     }

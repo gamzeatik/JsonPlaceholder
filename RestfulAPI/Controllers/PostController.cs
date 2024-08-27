@@ -75,7 +75,7 @@ namespace RestfulAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, UpdatePostRequest request)
+        public IActionResult Update(int id, CreatePostRequest request)
         {
             var existingPost = _service.GetById(id);
             if (existingPost == null)

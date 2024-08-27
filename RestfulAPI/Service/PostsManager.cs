@@ -25,7 +25,7 @@ namespace RestfulAPI.Service
 
         public List<Post> GetAll()
         {
-            return _repository.GetAll();
+            return _repository.GetAll().ToList();
         }
 
         public Post GetById(int id)

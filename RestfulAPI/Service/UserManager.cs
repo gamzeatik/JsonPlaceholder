@@ -1,4 +1,5 @@
-﻿using RestfulAPI.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using RestfulAPI.Model;
 using RestfulAPI.Repositories;
 
 namespace RestfulAPI.Service
@@ -25,12 +26,19 @@ namespace RestfulAPI.Service
 
         public List<User> GetAll()
         {
-            return _repository.GetAll();
+            return _repository.GetAll()
+                .Include(m => m.Address)
+                .Include(m => m.Address.Geo)
+                .Include(m => m.Company).ToList();
         }
 
         public User GetById(int id)
         {
-            return _repository.GetById(id);
+            return _repository.GetAll()
+                .Include(m => m.Address)
+                .Include(a => a.Address.Geo)
+                .Include(m => m.Company)
+                .FirstOrDefault(u => u.Id == id);
         }
 
         public User Update(int id, User user)

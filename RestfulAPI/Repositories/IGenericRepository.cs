@@ -5,7 +5,7 @@
         T Add(T entity);
         T Delete(T entity);
         T GetById(int id);
-        List<T> GetAll();
+        IQueryable<T> GetAll();
         T UpdateById(int id, T entity);
     }
 }
