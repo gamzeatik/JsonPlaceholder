@@ -37,6 +37,18 @@ namespace RestfulAPI.Profiles
             CreateMap<Geo, GeoResponse>();
             // Company -> CompanyResponse
             CreateMap<Company, CompanyResponse>();
+            // CreateAlbumRequest -> Album
+            CreateMap<CreateAlbumRequest, Album>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Photos, opt => opt.Ignore());
+            // Album -> AlbumResponse
+            CreateMap<Album, AlbumResponse>()
+            .ForMember(dest => dest.Photos, opt => opt.MapFrom(src => src.Photos));
+            // CreatePhotoRequest -> Photo
+            CreateMap<CreatePhotoRequest, Photo>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+            // Photo -> PhotoResponse
+            CreateMap<Photo, PhotoResponse>();
         }
     }
 }

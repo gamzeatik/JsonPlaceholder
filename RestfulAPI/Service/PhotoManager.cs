@@ -3,18 +3,18 @@ using RestfulAPI.Repositories;
 
 namespace RestfulAPI.Service
 {
-    public class PostsManager : IPostsService
+    public class PhotoManager : IPhotoService
     {
-        private readonly IGenericRepository<Post> _repository;
+        private readonly IGenericRepository<Photo> _repository;
 
-        public PostsManager(IGenericRepository<Post> repository)
+        public PhotoManager(IGenericRepository<Photo> repository)
         {
             _repository = repository;
         }
 
-        public Post Create(Post post)
+        public Photo Create(Photo photo)
         {
-            return _repository.Add(post);
+            return _repository.Add(photo);
         }
 
         public void Delete(int id)
@@ -23,19 +23,14 @@ namespace RestfulAPI.Service
             _repository.Delete(value);
         }
 
-        public List<Post> GetAll()
+        public List<Photo> GetAll()
         {
             return _repository.GetAll().ToList();
         }
 
-        public Post GetById(int id)
+        public Photo GetById(int id)
         {
             return _repository.GetById(id);
-        }
-
-        public Post Update(int id, Post post)
-        {
-            return _repository.UpdateById(id, post);
         }
     }
 }

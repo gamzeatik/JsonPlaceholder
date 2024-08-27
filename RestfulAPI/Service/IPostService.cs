@@ -2,7 +2,7 @@
 
 namespace RestfulAPI.Service
 {
-    public interface IPostsService
+    public interface IPostService
     {
         Post Create(Post post);
         Post GetById(int id);

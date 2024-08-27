@@ -13,8 +13,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add Scoped
-builder.Services.AddScoped<IPostsService, PostsManager>();
+builder.Services.AddScoped<IPostService, PostManager>();
 builder.Services.AddScoped<IUserService, UserManager>();
+builder.Services.AddScoped<IAlbumService, AlbumManager>();
+builder.Services.AddScoped<IPhotoService, PhotoManager>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(EfRepository<>));
 
 builder.Services.AddControllers();

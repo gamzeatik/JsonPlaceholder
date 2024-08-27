@@ -13,10 +13,10 @@ namespace RestfulAPI.Controllers
     [Route("api/posts")]
     public class PostController : ControllerBase
     {
-        private readonly IPostsService _service;
+        private readonly IPostService _service;
         private readonly IMapper _mapper;
 
-        public PostController(IPostsService service, IMapper mapper)
+        public PostController(IPostService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

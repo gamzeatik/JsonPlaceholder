@@ -15,6 +15,8 @@ namespace RestfulAPI.Context
         DbSet<Address> Addresses { get; set; }
         DbSet<Company> Companies { get; set; }
         DbSet<Geo> Geos { get; set; }
+        DbSet<Album> Albums { get; set; }
+        DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +41,19 @@ namespace RestfulAPI.Context
                 .HasOne(u => u.Company)
                 .WithOne(c => c.User)
                 .HasForeignKey<Company>(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            // User <-> Album: One-to-Many relationship
+            modelBuilder.Entity<Album>()
+                .HasOne(a => a.User)
+                .WithMany(u => u.Albums)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Album <-> Photo: One-to-Many relationship
+            modelBuilder.Entity<Photo>()
+                .HasOne(p => p.Album)
+                .WithMany(a => a.Photos)
+                .HasForeignKey(p => p.AlbumId)
                 .OnDelete(DeleteBehavior.Cascade);
 
         }
