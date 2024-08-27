@@ -9,7 +9,7 @@ a free online REST API that you can use for testing and prototyping.
 
 ### Prerequisites
 - [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
+- Visual Studio 2022
 - SQL Server or another database supported by Entity Framework Core
 
 ### Steps
