@@ -40,20 +40,6 @@ a free online REST API that you can use for testing and prototyping.
     ```bash
     dotnet run
     ```
-
-## Usage
-Once the application is running, you can use tools like [Postman](https://www.postman.com/) 
-or [curl](https://curl.se/) to interact with the API.
-
-### Example: Create a Post
-```bash
-curl -X POST "https://localhost:5001/api/posts" -H "Content-Type: application/json" -d '{
-  "title": "Sample Post",
-  "content": "This is a sample post.",
-  "userId": 1
-}'
-
-
 Swagger UI
 This project includes Swagger UI for API documentation and testing. Once the application is running, 
 you can access the Swagger UI by navigating to the following URL in your web browser:
@@ -66,3 +52,16 @@ a popular tool for developers to use when building and testing front-end or back
 The endpoints and data models in this project are designed to closely resemble those of JSONPlaceholder, making it a useful local alternative for testing and development.
 
 Official JSONPlaceholder API: https://jsonplaceholder.typicode.com/
+
+
+## Usage
+Once the application is running, you can use tools like [Postman](https://www.postman.com/) 
+or [curl](https://curl.se/) to interact with the API.
+
+### Example: Create a Post
+```bash
+curl -X POST "https://localhost:5001/api/posts" -H "Content-Type: application/json" -d '{
+  "title": "Sample Post",
+  "content": "This is a sample post.",
+  "userId": 1
+}'
