@@ -60,7 +60,7 @@ or [curl](https://curl.se/) to interact with the API.
 
 ### Example: Create a Post
 ```bash
-curl -X POST "https://localhost:5001/api/posts" -H "Content-Type: application/json" -d '{
+curl -X POST "https://localhost:7235/api/posts" -H "Content-Type: application/json" -d '{
   "title": "Sample Post",
   "content": "This is a sample post.",
   "userId": 1
