@@ -49,6 +49,11 @@ namespace RestfulAPI.Profiles
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
             // Photo -> PhotoResponse
             CreateMap<Photo, PhotoResponse>();
+            // Todo -> TodoResponse
+            CreateMap<Todo, TodoResponse>();
+            // CreateTodoRequest -> Todo
+            CreateMap<CreateTodoRequest, Todo>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
 }

@@ -17,6 +17,7 @@ namespace RestfulAPI.Context
         DbSet<Geo> Geos { get; set; }
         DbSet<Album> Albums { get; set; }
         DbSet<Photo> Photos { get; set; }
+        DbSet<Todo> Todos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +57,12 @@ namespace RestfulAPI.Context
                 .HasForeignKey(p => p.AlbumId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // User <-> Todo: One-to-Many relationship
+            modelBuilder.Entity<Todo>()
+                .HasOne(t => t.User)
+                .WithMany(u => u.Todos)
+                .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

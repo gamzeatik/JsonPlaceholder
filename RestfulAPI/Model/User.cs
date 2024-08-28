@@ -18,5 +18,6 @@ namespace RestfulAPI.Model
         public string Website { get; set; }
         public Company Company { get; set; }
         public ICollection<Album> Albums { get; set; }
+        public ICollection<Todo> Todos { get; set; }
     }
 }
