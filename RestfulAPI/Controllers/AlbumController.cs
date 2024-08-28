@@ -36,6 +36,18 @@ namespace RestfulAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
         }
 
+        [HttpGet("with-photos")]
+        public IActionResult GetWithPhotos()
+        {
+            var albums = _service.GetAllWithPhotos();
+            if (albums == null || !albums.Any())
+            {
+                return NoContent();
+            }
+
+            var response = _mapper.Map<List<AlbumResponse>>(albums);
+            return Ok(response);
+        }
         [HttpGet]
         public IActionResult Get()
         {
@@ -48,6 +60,19 @@ namespace RestfulAPI.Controllers
             var response = _mapper.Map<List<AlbumResponse>>(albums);
             return Ok(response);
         }
+        [HttpGet("by-user-id/{userId}")]
+        public IActionResult GetByUserId(int userId)
+        {
+            var albums = _service.GetByUserId(userId);
+            if (albums == null || !albums.Any())
+            {
+                return NoContent();
+            }
+
+            var response = _mapper.Map<List<AlbumResponse>>(albums);
+            return Ok(response);
+        }
+
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)

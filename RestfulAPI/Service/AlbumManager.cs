@@ -26,6 +26,11 @@ namespace RestfulAPI.Service
 
         public List<Album> GetAll()
         {
+            return _repository.GetAll().ToList();
+        }
+
+        public List<Album> GetAllWithPhotos()
+        {
             return _repository.GetAll()
                 .Include(m => m.Photos).ToList();
         }
@@ -35,6 +40,12 @@ namespace RestfulAPI.Service
             return _repository.GetAll()
                 .Include(m => m.Photos)
                 .FirstOrDefault(m => m.Id == id);
+        }
+
+        public List<Album> GetByUserId(int userId)
+        {
+            return _repository.GetAll()
+                .Where(m => m.UserId == userId).ToList();
         }
 
         public Album Update(int id, Album album)
