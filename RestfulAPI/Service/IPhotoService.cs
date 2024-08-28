@@ -8,5 +8,6 @@ namespace RestfulAPI.Service
         Photo GetById(int id);
         List<Photo> GetAll();
         void Delete(int id);
+        List<Photo> GetByAlbumId(int albumId);
     }
 }

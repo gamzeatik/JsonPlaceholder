@@ -28,6 +28,12 @@ namespace RestfulAPI.Service
             return _repository.GetAll().ToList();
         }
 
+        public List<Photo> GetByAlbumId(int albumId)
+        {
+            return _repository.GetAll()
+                .Where(p => p.AlbumId == albumId).ToList();
+        }
+
         public Photo GetById(int id)
         {
             return _repository.GetById(id);

@@ -39,6 +39,17 @@ namespace RestfulAPI.Controllers
             var response = _mapper.Map<List<PhotoResponse>>(photos);
             return Ok(response);
         }
+        [HttpGet("by-album-id/{albumId}")]
+        public IActionResult Get(int albumId)
+        {
+            var photos = _service.GetByAlbumId(albumId);
+            if (photos == null || !photos.Any())
+            {
+                return NoContent();
+            }
+            var response = _mapper.Map<List<PhotoResponse>>(photos);
+            return Ok(response);
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
