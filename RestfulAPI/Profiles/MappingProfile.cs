@@ -54,6 +54,11 @@ namespace RestfulAPI.Profiles
             // CreateTodoRequest -> Todo
             CreateMap<CreateTodoRequest, Todo>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
+            // Comment -> CommentResponse 
+            CreateMap<Comment, CommentResponse>();
+            // CreateCommentRequest -> Comment
+            CreateMap<CreateCommentRequest, Comment>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
         }
     }
 }

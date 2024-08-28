@@ -18,6 +18,7 @@ builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IAlbumService, AlbumManager>();
 builder.Services.AddScoped<IPhotoService, PhotoManager>();
 builder.Services.AddScoped<ITodoService, TodoManager>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(EfRepository<>));
 
 builder.Services.AddControllers();

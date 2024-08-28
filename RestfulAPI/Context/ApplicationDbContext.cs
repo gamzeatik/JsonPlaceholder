@@ -18,6 +18,7 @@ namespace RestfulAPI.Context
         DbSet<Album> Albums { get; set; }
         DbSet<Photo> Photos { get; set; }
         DbSet<Todo> Todos { get; set; }
+        DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,6 +63,12 @@ namespace RestfulAPI.Context
                 .HasOne(t => t.User)
                 .WithMany(u => u.Todos)
                 .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            // Post <-> Comment: One-to-Many relationship
+            modelBuilder.Entity<Comment>()
+                .HasOne(p => p.Post)
+                .WithMany(u => u.Comments)
+                .HasForeignKey(p => p.PostId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

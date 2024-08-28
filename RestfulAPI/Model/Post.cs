@@ -14,5 +14,6 @@ namespace RestfulAPI.Model
         [Required]
         [MaxLength(500)]
         public string Body { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }
