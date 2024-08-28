@@ -3,7 +3,7 @@
 This project is a RESTful API built using ASP.NET Core 6.0. 
 It provides various endpoints for managing resources. 
 The project is inspired by and closely models the API provided by [JSONPlaceholder](https://jsonplaceholder.typicode.com/), 
-a free online REST API that you can use for testing and prototyping.
+a free online REST API that using for testing and prototyping.
 
 ## Installation
 
@@ -15,7 +15,7 @@ a free online REST API that you can use for testing and prototyping.
 ### Steps
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/RestfulAPI.git
+    git clone https://github.com/gamzeatik/RestfulAPI.git
     cd RestfulAPI
     ```
 
@@ -49,7 +49,8 @@ https://localhost:7235/swagger/index.html
 JSONPlaceholder
 This project was inspired by the JSONPlaceholder API, 
 a popular tool for developers to use when building and testing front-end or back-end applications. 
-The endpoints and data models in this project are designed to closely resemble those of JSONPlaceholder, making it a useful local alternative for testing and development.
+The endpoints and data models in this project are designed to closely resemble those of JSONPlaceholder, 
+making it a useful local alternative for testing and development.
 
 Official JSONPlaceholder API: https://jsonplaceholder.typicode.com/
 
