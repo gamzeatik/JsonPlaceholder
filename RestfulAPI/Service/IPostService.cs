@@ -9,5 +9,6 @@ namespace RestfulAPI.Service
         List<Post> GetAll();
         void Delete(int id);
         Post Update(int id, Post posts);
+        List<Post> GetByUserId(int userId);
     }
 }

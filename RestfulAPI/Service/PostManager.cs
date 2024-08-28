@@ -33,6 +33,12 @@ namespace RestfulAPI.Service
             return _repository.GetById(id);
         }
 
+        public List<Post> GetByUserId(int userId)
+        {
+            return _repository.GetAll()
+                 .Where(m => m.UserId == userId).ToList();
+        }
+
         public Post Update(int id, Post post)
         {
             return _repository.UpdateById(id, post);

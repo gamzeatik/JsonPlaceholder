@@ -67,6 +67,21 @@ namespace RestfulAPI.Controllers
             return Ok(response);
         }
 
+        [HttpGet("by-user-id/{userId}")]
+        public IActionResult GetByUserId(int userId)
+        {
+            var posts = _service.GetByUserId(userId);
+
+            if (posts == null || !posts.Any())
+            {
+                return NoContent();
+            }
+            // List<Post> -> List<PostResponse>
+            var response = _mapper.Map<List<PostResponse>>(posts);
+
+            return Ok(response);
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
