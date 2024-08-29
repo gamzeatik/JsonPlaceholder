@@ -15,7 +15,7 @@ a free online REST API that using for testing and prototyping.
 ### Steps
 1. Clone the repository:
     ```bash
-    git clone https://github.com/gamzeatik/RestfulAPI.git
+    git clone https://github.com/gamzeatik/JsonPlaceholder-RestfulAPI.git
     cd RestfulAPI
     ```
 
